@@ -9,29 +9,6 @@
         <item name="android:statusBarColor">@color/status_bar_color</item>
     </style>
 
-    <style name="TextLabel">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center_vertical</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textColorHint">#676676</item>
-        <item name="colorAccent">#ff0000</item>
-        <item name="colorControlNormal">#00ff00</item>
-        <item name="colorControlActivated">#ffff00</item>
-    </style>
-
-    <style name="TextValueLogin">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:ellipsize">end</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:gravity">start|center_vertical</item>
-        <item name="android:background">@null</item>
-        <item name="android:layout_marginBottom">10dp</item>
-        <item name="android:cacheColorHint">@color/reg_item_title_color</item>
-    </style>
-
     <style name="ProceItemKey">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
@@ -42,5 +19,16 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:paddingStart">10dp</item>
+    </style>
+
+    <!--Error label text style-->
+    <style name="MyErrorText" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/red_error</item>
+    </style>
+
+    <!--Input field style-->
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">#C5C5C5</item>
+        <item name="colorControlActivated">@color/white</item>
     </style>
 </resources>

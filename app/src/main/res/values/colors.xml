@@ -6,4 +6,6 @@
     <color name="white">#ffffff</color>
     <color name="reg_item_title_color">#636636</color>
     <color name="status_bar_color">#282b42</color>
+    <color name="red_error">#A50000</color>
+    <color name="white_grey">#BEBEBE</color>
 </resources>

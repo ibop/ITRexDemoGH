@@ -2,6 +2,7 @@ package com.itrex.itrexdemo.presentation.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.support.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,6 +40,12 @@ abstract class BaseMvpFragment<V : BaseMvpView, P : BasePresenter<V>> : MvpAppCo
 
     override fun hideKeyboard() {
         (activity as BaseActivity).hideKeyboard()
+    }
+
+    open fun animate(viewGroup: ViewGroup?) {
+        if (viewGroup != null) {
+            TransitionManager.beginDelayedTransition(viewGroup)
+        }
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.itrex.itrexdemo.presentation.fragments
 
 import android.text.Editable
+import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.itrex.itrexdemo.R
 import com.itrex.itrexdemo.logic.presenters.StartMvpPresenter
@@ -37,6 +38,22 @@ class StartFragment : BaseMvpFragment<StartMvpView, StartMvpPresenter>(), StartM
                 presenter.onTextChanged(s.toString())
             }
         })
+
+        presenter.startAnimation()
+    }
+
+    /**
+     * show fields
+     */
+    override fun animateScreen() {
+        vTvWelcome.post {
+            animate(vSTartScreenLayout)
+            vTvWelcome.visibility = View.GONE
+            vTiStartLayout.visibility = View.VISIBLE
+            vBtnStartNext.visibility = View.VISIBLE
+            vTvSymbolsHint.visibility = View.VISIBLE
+
+        }
     }
 
     /**

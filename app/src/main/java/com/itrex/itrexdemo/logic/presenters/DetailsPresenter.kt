@@ -1,5 +1,6 @@
 package com.itrex.itrexdemo.logic.presenters
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.support.v4.content.ContextCompat
@@ -47,7 +48,11 @@ class DetailsPresenter : BasePresenter<DetailsMvpView>() {
 
         // set data
         chart1.data = data
-        chart1.invalidate()
+
+        (context as Activity).runOnUiThread {
+            chart1.invalidate()
+            viewState.showFields(R.string.description)
+        }
     }
 
     /**
@@ -92,5 +97,16 @@ class DetailsPresenter : BasePresenter<DetailsMvpView>() {
 
         viewState.setKey(priceModel.key)
         viewState.setValue(priceModel.value)
+    }
+
+    fun loadData(chart1: LineChart, context: Context?) {
+        Thread(Runnable {
+            //simulate loading from backend
+            Thread.sleep(700)
+
+            //simulate handling answer
+            setDataForChart(chart1, context)
+
+        }).start()
     }
 }

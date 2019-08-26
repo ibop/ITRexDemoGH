@@ -31,4 +31,12 @@ class StartMvpPresenter : BasePresenter<StartMvpView>() {
             viewState.setError(0)
         }
     }
+
+    fun startAnimation() {
+        //here can be loading data or sync with backend
+        Thread(Runnable {
+            Thread.sleep(1000)
+            viewState.animateScreen()
+        }).start()
+    }
 }

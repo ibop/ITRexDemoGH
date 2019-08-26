@@ -10,4 +10,6 @@
     <string name="details">Details</string>
     <string name="empty_field">Empty field</string>
     <string name="dataset">DataSet 1</string>
+    <string name="welcome">Welcome</string>
+    <string name="description_title">DESCRIPTION:</string>
 </resources>

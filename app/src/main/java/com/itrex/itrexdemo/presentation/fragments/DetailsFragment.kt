@@ -1,5 +1,7 @@
 package com.itrex.itrexdemo.presentation.fragments
 
+import android.content.Context
+import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.itrex.itrexdemo.R
 import com.itrex.itrexdemo.logic.presenters.DetailsPresenter
@@ -29,7 +31,7 @@ class DetailsFragment : BaseMvpFragment<DetailsMvpView, DetailsPresenter>(), Det
             activity?.onBackPressed()
         }
 
-        presenter.setDataForChart(chart1, context)
+        presenter.loadData(chart1, activity as Context)
     }
 
     /**
@@ -45,5 +47,14 @@ class DetailsFragment : BaseMvpFragment<DetailsMvpView, DetailsPresenter>(), Det
 
     override fun setValue(value: Float) {
         vTvValueProduct.text = String.format("%.2f", value)
+    }
+
+    override fun showFields(resIdString: Int) {
+        animate(vDetailsLayout)
+        vPrDetails.visibility = View.GONE
+        vSvDetailsText.visibility = View.VISIBLE
+        vChartLayout.visibility = View.VISIBLE
+        vTvDescTitle.visibility = View.VISIBLE
+        vTvDescription.text = getString(resIdString)
     }
 }

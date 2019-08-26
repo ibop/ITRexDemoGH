@@ -10,8 +10,10 @@ import com.itrex.itrexdemo.R
 import com.itrex.itrexdemo.data.PriceModel
 import kotlinx.android.synthetic.main.price_layout_item.view.*
 
-class PriceAdapter (private var items: ArrayList<PriceModel>,
-                    private var listener: View.OnClickListener?) :
+class PriceAdapter(
+    private var items: ArrayList<PriceModel>,
+    private var listener: View.OnClickListener?
+) :
     RecyclerView.Adapter<MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): MyViewHolder {
         val view =
@@ -45,7 +47,7 @@ class PriceAdapter (private var items: ArrayList<PriceModel>,
     }
 }
 
-class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     var key: TextView = view.vTvPriceKey
     var value: TextView = view.vTvPriceValue
     var upDown: ImageView = view.vIvUpDown

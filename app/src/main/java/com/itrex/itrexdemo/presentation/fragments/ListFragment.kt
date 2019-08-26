@@ -11,7 +11,11 @@ import com.itrex.itrexdemo.presentation.activities.MainActivity
 import com.itrex.itrexdemo.presentation.views.ListMvpView
 import kotlinx.android.synthetic.main.action_bar_layout.*
 import kotlinx.android.synthetic.main.fragment_list_layout.*
+import java.util.ArrayList
 
+/**
+ * Class to show list of data
+ */
 class ListFragment : BaseMvpFragment<ListMvpView, ListPresenter>(), ListMvpView {
 
     @InjectPresenter
@@ -26,20 +30,15 @@ class ListFragment : BaseMvpFragment<ListMvpView, ListPresenter>(), ListMvpView 
     }
 
     private fun initViews() {
-        setTitle()
-        initList()
+        presenter.initList()
         vListBack.setOnClickListener {
             activity?.onBackPressed()
         }
     }
 
-    private fun setTitle() {
-        vTitle.text = getString(R.string.details)
-    }
-
-    private fun initList() {
+    override fun showListData(listData: ArrayList<PriceModel>) {
         vRvPrices.layoutManager = LinearLayoutManager(context)
-        vRvPrices.adapter = PriceAdapter(presenter.getListData(), View.OnClickListener {
+        vRvPrices.adapter = PriceAdapter(listData, View.OnClickListener {
             (activity as MainActivity).priceModel = it.tag as PriceModel
             openFragment(DetailsFragment::class.java)
         })

@@ -23,11 +23,20 @@ class DetailsFragment : BaseMvpFragment<DetailsMvpView, DetailsPresenter>(), Det
     }
 
     private fun initViews() {
+        setTitle()
+
         vListBack.setOnClickListener {
             activity?.onBackPressed()
         }
 
         presenter.setDataForChart(chart1, context)
+    }
+
+    /**
+     * Title of the screen
+     */
+    private fun setTitle() {
+        vTitle.text = getString(R.string.details)
     }
 
     override fun setKey(key: String) {

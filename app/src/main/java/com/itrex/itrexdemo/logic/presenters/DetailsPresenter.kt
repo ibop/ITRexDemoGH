@@ -16,6 +16,10 @@ import java.security.SecureRandom
 
 @InjectViewState
 class DetailsPresenter : BasePresenter<DetailsMvpView>() {
+
+    /**
+     * Generate data for chart
+     */
     fun setDataForChart(
         chart1: LineChart,
         context: Context?
@@ -28,38 +32,14 @@ class DetailsPresenter : BasePresenter<DetailsMvpView>() {
 
         val values2 = ArrayList<Entry>()
 
+        //generate random data
         val rnd = SecureRandom()
         for (i in 0..20) {
             values2.add(Entry(i.toFloat(), rnd.nextFloat() * 10f))
         }
 
-
-        val set1: LineDataSet
-        set1 = LineDataSet(values2, "DataSet 1")
-
-        set1.mode = LineDataSet.Mode.HORIZONTAL_BEZIER
-
-
-        //border of line (middle)
-        set1.color = ContextCompat.getColor(context!!, R.color.colorPrimaryDark)
-
-        set1.setDrawCircles(false)
-        set1.lineWidth = 2f
-        set1.circleRadius = 3f
-        set1.fillAlpha = 255
-        set1.setDrawFilled(true)
-
-        val drawable = ContextCompat.getDrawable(context!!, R.drawable.fade_red)
-        set1.fillDrawable = drawable
-
-        //above
-        set1.highLightColor = Color.rgb(255, 255, 255)
-
-        set1.setDrawCircleHole(false)
-
-
         val dataSets = ArrayList<LineDataSet>()
-        dataSets.add(set1) // add the data sets
+        dataSets.add(getSet(values2, context)) // add the data sets
 
         // create a data object with the data sets
         val data = LineData(dataSets as List<ILineDataSet>?)
@@ -68,6 +48,38 @@ class DetailsPresenter : BasePresenter<DetailsMvpView>() {
         // set data
         chart1.data = data
         chart1.invalidate()
+    }
+
+    /**
+     * UI settings
+     */
+    private fun getSet(
+        values2: ArrayList<Entry>,
+        context: Context?
+    ): LineDataSet {
+        val set1 = LineDataSet(values2, context?.getString(R.string.dataset))
+
+        set1.mode = LineDataSet.Mode.HORIZONTAL_BEZIER
+
+        //border of line (middle)
+        set1.color = ContextCompat.getColor(context!!, R.color.white)
+
+        set1.setDrawCircles(false)
+        set1.lineWidth = 2f
+        set1.circleRadius = 3f
+        set1.fillAlpha = 255
+        set1.valueTextColor = ContextCompat.getColor(context, R.color.white)
+        set1.setDrawFilled(true)
+
+        val drawable = ContextCompat.getDrawable(context, R.drawable.fade_red)
+        set1.fillDrawable = drawable
+
+        //above
+        set1.highLightColor = Color.rgb(255, 255, 255)
+
+        set1.setDrawCircleHole(false)
+
+        return set1
     }
 
     /**

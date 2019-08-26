@@ -25,7 +25,7 @@ class ListPresenter : BasePresenter<ListMvpView>() {
     /**
      * Generate random list data
      */
-    fun getListData(): ArrayList<PriceModel> {
+    private fun getListData(): ArrayList<PriceModel> {
 
         val list = ArrayList<PriceModel>()
         for (i in 0..30) {
@@ -38,5 +38,9 @@ class ListPresenter : BasePresenter<ListMvpView>() {
             )
         }
         return list
+    }
+
+    fun initList() {
+        viewState.showListData(getListData())
     }
 }

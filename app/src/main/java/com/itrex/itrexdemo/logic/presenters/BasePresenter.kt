@@ -12,6 +12,9 @@ open class BasePresenter<V : BaseMvpView> : MvpPresenter<V>() {
         viewState.hideKeyboard()
     }
 
+    /**
+     * show info toast
+     */
     fun showToast(resId: Int) {
         viewState.showToast(resId)
     }

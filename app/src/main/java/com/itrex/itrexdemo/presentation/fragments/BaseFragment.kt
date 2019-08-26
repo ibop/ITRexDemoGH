@@ -7,12 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.arellomobile.mvp.MvpAppCompatFragment
+import com.arellomobile.mvp.MvpFragment
 import com.itrex.itrexdemo.logic.presenters.BasePresenter
 import com.itrex.itrexdemo.presentation.activities.BaseActivity
 import com.itrex.itrexdemo.presentation.views.BaseMvpView
 
-abstract class BaseMvpFragment<V : BaseMvpView, P : BasePresenter<V>> : MvpAppCompatFragment(),
+abstract class BaseFragment<V : BaseMvpView, P : BasePresenter<V>> : MvpFragment(),
     BaseMvpView {
 
     override fun onCreateView(
@@ -21,11 +21,11 @@ abstract class BaseMvpFragment<V : BaseMvpView, P : BasePresenter<V>> : MvpAppCo
         return inflater.inflate(getLayoutId(), container, false)
     }
 
-    fun openFragment(fragmentClass: Class<out BaseMvpFragment<*, *>>) {
+    fun openFragment(fragmentClass: Class<out BaseFragment<*, *>>) {
         openFragment(fragmentClass, null)
     }
 
-    fun openFragment(fragmentClass: Class<out BaseMvpFragment<*, *>>, bundle: Bundle?) {
+    fun openFragment(fragmentClass: Class<out BaseFragment<*, *>>, bundle: Bundle?) {
         (activity as BaseActivity).openFragment(fragmentClass, bundle)
     }
 

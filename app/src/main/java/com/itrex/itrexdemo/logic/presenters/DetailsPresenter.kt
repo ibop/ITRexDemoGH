@@ -3,6 +3,7 @@ package com.itrex.itrexdemo.logic.presenters
 import android.app.Activity
 import android.content.Context
 import android.graphics.Color
+import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import com.arellomobile.mvp.InjectViewState
 import com.github.mikephil.charting.charts.LineChart
@@ -17,6 +18,20 @@ import java.security.SecureRandom
 
 @InjectViewState
 class DetailsPresenter : BasePresenter<DetailsMvpView>() {
+
+    companion object {
+        const val ITEM = "item"
+    }
+
+    /**
+     * Show Data on the screen
+     */
+    fun initData(args: Bundle?) {
+        val priceModel = args?.getSerializable(ITEM) as PriceModel? ?: return
+
+        viewState.setKey(priceModel.key)
+        viewState.setValue(priceModel.value)
+    }
 
     /**
      * Generate data for chart
@@ -87,17 +102,6 @@ class DetailsPresenter : BasePresenter<DetailsMvpView>() {
         return set1
     }
 
-    /**
-     * Show Data on the screen
-     */
-    fun initData(priceModel: PriceModel?) {
-        if (priceModel == null) {
-            return
-        }
-
-        viewState.setKey(priceModel.key)
-        viewState.setValue(priceModel.value)
-    }
 
     fun loadData(chart1: LineChart, context: Context?) {
         Thread(Runnable {
@@ -109,4 +113,6 @@ class DetailsPresenter : BasePresenter<DetailsMvpView>() {
 
         }).start()
     }
+
+
 }

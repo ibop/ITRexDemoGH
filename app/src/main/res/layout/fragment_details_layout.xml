@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:visibility="gone"
-        android:layout_margin="15dp"
+        android:layout_margin="@dimen/margin_side"
         android:paddingTop="5dp"
         android:background="@drawable/btn_background_round"
         app:layout_constraintTop_toBottomOf="@+id/include">
@@ -28,25 +28,16 @@
 
     <TextView
         android:id="@+id/vTvKeyDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="CDd"
-        android:textAllCaps="true"
-        android:textColor="@color/white"
-        android:textSize="41sp"
-        android:textStyle="bold"
+        android:text="---"
         app:layout_constraintStart_toStartOf="@+id/vChartLayout"
-        app:layout_constraintTop_toBottomOf="@+id/vChartLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/vChartLayout"
+        style="@style/DetailTV" />
 
     <TextView
         android:id="@+id/vTvValueProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="0.00"
-        android:textColor="@color/white"
-        android:textSize="41sp"
+        style="@style/DetailTV"
+        android:text="---"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vChartLayout" />
 
@@ -61,19 +52,17 @@
         app:layout_constraintTop_toBottomOf="@+id/vTvKeyDetails" />
 
     <View
-        android:layout_width="match_parent"
-        android:layout_height="0.7dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="@dimen/margin_side"
         android:layout_marginStart="30dp"
-        android:background="@color/white"
         app:layout_constraintStart_toStartOf="@+id/vTvKeyDetails"
-        app:layout_constraintTop_toBottomOf="@+id/vTvKeyDetails" />
+        app:layout_constraintTop_toBottomOf="@+id/vTvKeyDetails"
+        style="@style/DividerStyle" />
 
     <ScrollView
         android:id="@+id/vSvDetailsText"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="15dp"
+        android:layout_margin="@dimen/margin_side"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vTvDescTitle">

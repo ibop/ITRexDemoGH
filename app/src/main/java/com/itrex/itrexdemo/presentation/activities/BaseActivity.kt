@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.view.inputmethod.InputMethodManager
 import com.itrex.itrexdemo.R
-import com.itrex.itrexdemo.presentation.fragments.BaseMvpFragment
+import com.itrex.itrexdemo.presentation.fragments.BaseFragment
 
 abstract class BaseActivity  : FragmentActivity() {
 
@@ -35,13 +35,12 @@ abstract class BaseActivity  : FragmentActivity() {
     }
 
     @SuppressLint("ResourceType")
-    fun openFragment(fragmentClass: Class<out BaseMvpFragment<*,*>>, bundle: Bundle?): BaseMvpFragment<*, *>? {
+    fun openFragment(fragmentClass: Class<out BaseFragment<*,*>>, bundle: Bundle?): BaseFragment<*, *>? {
         try {
             val fragment = createFragment(fragmentClass, bundle)
-//            fragment.arguments = bundle
             val popBackStackTag = fragmentClass.name
             val fragmentName = fragmentClass.name
-            val transaction = supportFragmentManager.beginTransaction()
+            val transaction = fragmentManager.beginTransaction()
 
             transaction.setCustomAnimations(R.anim.enter, R.anim.exit, 0, 0)
 
@@ -55,14 +54,14 @@ abstract class BaseActivity  : FragmentActivity() {
     }
 
     @Throws(Exception::class)
-    fun createFragment(fragmentClass: Class<out BaseMvpFragment<*, *>>, args: Bundle?): BaseMvpFragment<*, *> {
+    fun createFragment(fragmentClass: Class<out BaseFragment<*, *>>, args: Bundle?): BaseFragment<*, *> {
         val fragment = fragmentClass.newInstance()
         var bundle: Bundle? = args
         if (bundle == null) {
             bundle = Bundle()
         }
         fragment.setHasOptionsMenu(true)
-//        fragment.arguments = bundle
+        fragment.setArguments(bundle)
         return fragment
     }
 

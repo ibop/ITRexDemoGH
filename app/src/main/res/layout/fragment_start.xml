@@ -14,6 +14,8 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
         android:hint="@string/ticker_symbols"
+        app:counterEnabled="true"
+        app:counterMaxLength="100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textColorHint="@color/white_grey"

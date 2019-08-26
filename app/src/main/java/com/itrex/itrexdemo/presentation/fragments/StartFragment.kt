@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_start.*
 /**
  * Start fragment
  */
-class StartFragment : BaseMvpFragment<StartMvpView, StartMvpPresenter>(), StartMvpView {
+class StartFragment : BaseFragment<StartMvpView, StartMvpPresenter>(), StartMvpView {
 
     @InjectPresenter
     lateinit var presenter: StartMvpPresenter

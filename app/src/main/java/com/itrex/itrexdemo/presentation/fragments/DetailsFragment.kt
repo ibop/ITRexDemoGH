@@ -5,12 +5,11 @@ import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.itrex.itrexdemo.R
 import com.itrex.itrexdemo.logic.presenters.DetailsPresenter
-import com.itrex.itrexdemo.presentation.activities.MainActivity
 import com.itrex.itrexdemo.presentation.views.DetailsMvpView
 import kotlinx.android.synthetic.main.action_bar_layout.*
 import kotlinx.android.synthetic.main.fragment_details_layout.*
 
-class DetailsFragment : BaseMvpFragment<DetailsMvpView, DetailsPresenter>(), DetailsMvpView {
+class DetailsFragment : BaseFragment<DetailsMvpView, DetailsPresenter>(), DetailsMvpView {
 
     @InjectPresenter
     lateinit var presenter: DetailsPresenter
@@ -21,7 +20,7 @@ class DetailsFragment : BaseMvpFragment<DetailsMvpView, DetailsPresenter>(), Det
 
     override fun initActions() {
         initViews()
-        presenter.initData((activity as MainActivity).priceModel)
+        presenter.initData(arguments)
     }
 
     private fun initViews() {
